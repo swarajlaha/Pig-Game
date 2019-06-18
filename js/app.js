@@ -8,6 +8,7 @@
 */
 
 var scores, roundScore, activePlayer, gamePlaying;
+var targetScore = 100;
 
 init();
 
@@ -20,8 +21,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
         // 2. Display the result.
         var diceDOM = document.querySelector('.dice');
-        diceDOM.getElementsByClassName.display = 'block';
-        diceDOM.src = 'dice-' + dice + '.png';
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'images/dice-' + dice + '.png';
 
         // 3. Update the round score, IF the rolled no. was NOT a 1.
         if(dice !== 1) {
@@ -49,7 +50,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
         // Check if the player won the game.
-        if(scores[activePlayer] >= 100) {
+        if(scores[activePlayer] >= targetScore) {
 
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
@@ -100,5 +101,5 @@ function init() {
     document.querySelector('.player-1-panel').classList.remove('winner');
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
-    document.querySelector('.player-0-panel').classList.add('add');
+    document.querySelector('.player-0-panel').classList.add('active');
 }
